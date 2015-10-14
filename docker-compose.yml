@@ -1,0 +1,11 @@
+redis:
+  restart: always
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: target.service=database
+    io.rancher.container.pull_image: always
+  tty: true
+  image: thecore/docker-glusterfs:dev
+  volumes:
+  - /redis/data:/data
+  stdin_open: true
