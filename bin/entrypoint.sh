@@ -28,7 +28,7 @@ fi
 perl -p -i -e "s/^port .*/port ${REDIS_PORT}/g" /etc/redis.conf
 perl -p -i -e "s/^daemonize .*/daemonize no/g" /etc/redis.conf
 perl -p -i -e "s/^appendonly .*/appendonly yes/g" /etc/redis.conf
-if [ "${MY_IP}" == "${SLAVE_IP}" ]; then
+if [ "${MY_IP}" != "${MASTER_IP}" ]; then
   perl -p -i -e "s/^#? ?slaveof .*/slaveof ${MASTER_IP} ${MASTER_PORT}/g" /etc/redis.conf
 fi
 
