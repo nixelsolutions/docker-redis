@@ -2,6 +2,8 @@
 
 set -e
 
+export MY_IP=`ip addr | grep inet | grep 172 | tail -1 | awk '{print $2}' | awk -F\/ '{print $1}'`
+
 sleep 5
 RANCHER_NODES=`dig +short ${RANCHER_SERVICE_NAME} | sort`
 if [ ! -z "${RANCHER_NODES}" ]; then
