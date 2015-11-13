@@ -1,0 +1,14 @@
+redis:
+  restart: always
+  environment: 
+  - MASTER_IP=**ChangeMe**"
+  - "constraint:service==database"
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: target.service=database
+    io.rancher.container.pull_image: always
+  tty: true
+  image: nixel/docker-redis:latest
+  volumes:
+  - /redis/data:/data
+  stdin_open: true
