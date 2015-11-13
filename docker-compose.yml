@@ -1,7 +1,7 @@
 redis:
   restart: always
   environment: 
-  - MASTER_IP=**ChangeMe**"
+  - "MASTER_IP=**ChangeMe**"
   - "constraint:service==database"
   labels:
     io.rancher.scheduler.global: 'true'
