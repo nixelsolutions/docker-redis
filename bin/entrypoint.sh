@@ -2,7 +2,10 @@
 
 set -e
 
-export MY_IP=`ip addr | grep inet | grep 172 | tail -1 | awk '{print $2}' | awk -F\/ '{print $1}'`
+if [ -z "${MY_IP}" -o "${MY_IP}" == "**ChangeMe**" ]; then
+  echo "ERROR MY_IP variable is not defined - Exiting..."
+  exit 1
+fi
 
 sleep 5
 RANCHER_NODES=`dig +short ${RANCHER_SERVICE_NAME} | sort`
