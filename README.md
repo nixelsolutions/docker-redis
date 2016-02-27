@@ -9,9 +9,12 @@ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ```
 
-## How to start the redis cluster:
+## How to start the redis cluster
 
-* Go to server1, and make sure to export these environment variables:
+### On server1
+
+* Copy docker-compose-redis1.yml file
+* Make sure to export these environment variables:
 
 ```
 NODE1_IP
@@ -29,10 +32,13 @@ export NODE1_IP=10.0.1.1
 * Now execute docker-compose to create the container:
 
 ```
-docker-compose up -d
+docker-compose -f docker-compose-redis1.yml up -d
 ```
 
-* Go to server2, and make sure to export these environment variables:
+### On server2
+
+* Copy docker-compose-redis2.yml file
+* Make sure to export these environment variables:
 
 ```
 NODE1_IP
@@ -53,10 +59,13 @@ export NODE2_IP=10.0.1.2
 * Now execute docker-compose to create the container:
 
 ```
-docker-compose up -d
+docker-compose -f docker-compose-redis2.yml up -d
 ```
 
-* Go to server3, and make sure to export these environment variables:
+### On server3
+
+* Copy docker-compose-redis3.yml file
+* Make sure to export these environment variables:
 
 ```
 NODE1_IP
@@ -77,6 +86,6 @@ export NODE3_IP=10.0.1.3
 * Now execute docker-compose to create the container:
 
 ```
-docker-compose up -d
+docker-compose -f docker-compose-redis2.yml up -d
 ```
 
