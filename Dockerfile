@@ -36,7 +36,6 @@ ENV REDIS_FAILOVER_TIMEOUT 60000
 ENV RANCHER_SERVICE_NAME redis
 ENV MASTER_IP **ChangeMe**
 ENV MASTER_PORT ${REDIS_PORT}
-ENV SLAVE_IP **ChangeMe**
 ENV MY_IP **ChangeMe**
 
 RUN mkdir /data && chown -R ${USER}:${USER} /data

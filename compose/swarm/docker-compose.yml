@@ -1,0 +1,41 @@
+redis1:
+  restart: always
+  environment:
+    - "MASTER_IP=${MASTER_IP}"
+    - "MY_IP=${NODE1_IP}"
+    - "constraint:database.node==database1"
+  ports:
+  - 6379:6379/tcp
+  - 26379:26379/tcp
+  volumes:
+  - /redis/data:/data
+  image: thecore/docker-redis:dev
+  net: ${SHORT_ENV}_generic
+
+redis2:
+  restart: always
+  environment:
+    - "MASTER_IP=${MASTER_IP}"
+    - "MY_IP=${NODE2_IP}"
+    - "constraint:database.node==database2"
+  ports:
+  - 6379:6379/tcp
+  - 26379:26379/tcp
+  volumes:
+  - /redis/data:/data
+  image: thecore/docker-redis:dev
+  net: ${SHORT_ENV}_generic
+
+redis3:
+  restart: always
+  environment:
+    - "MASTER_IP=${MASTER_IP}"
+    - "MY_IP=${NODE3_IP}"
+    - "constraint:database.node==database3"
+  ports:
+  - 6379:6379/tcp
+  - 26379:26379/tcp
+  volumes:
+  - /redis/data:/data
+  image: thecore/docker-redis:dev
+  net: ${SHORT_ENV}_generic

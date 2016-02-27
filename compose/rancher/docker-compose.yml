@@ -1,0 +1,13 @@
+redis:
+  restart: always
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: deploy.redis=yes
+  environment:
+    DEBUG: 0
+  tty: true
+  image: thecore/docker-redis:%VERSION%
+  volumes:
+  - /data/redis:/data
+  stdin_open: true

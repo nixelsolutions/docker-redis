@@ -1,0 +1,11 @@
+redis2:
+  restart: always
+  environment:
+    - "MASTER_IP=${NODE1_IP}"
+    - "MY_IP=${NODE2_IP}"
+  ports:
+  - 6379:6379/tcp
+  - 26379:26379/tcp
+  volumes:
+  - /redis/data:/data
+  image: nixel/docker-redis:${VERSION:latest}
