@@ -7,12 +7,12 @@ if [ -z "${MY_IP}" -o "${MY_IP}" == "**ChangeMe**" ]; then
   exit 1
 fi
 
-sleep 5
-RANCHER_NODES=`dig +short ${RANCHER_SERVICE_NAME} | sort`
-if [ ! -z "${RANCHER_NODES}" ]; then
-  export MASTER_IP=`echo "${RANCHER_NODES}" | head -1`
-  export MY_IP=`ip addr | grep inet | grep 10.42 | tail -1 | awk '{print $2}' | awk -F\/ '{print $1}'`
-fi
+#sleep 5
+#RANCHER_NODES=`dig +short ${RANCHER_SERVICE_NAME} | sort`
+#if [ ! -z "${RANCHER_NODES}" ]; then
+#  export MASTER_IP=`echo "${RANCHER_NODES}" | head -1`
+#  export MY_IP=`ip addr | grep inet | grep 10.42 | tail -1 | awk '{print $2}' | awk -F\/ '{print $1}'`
+#fi
 
 if [ -z "${MASTER_IP}" -o "${MASTER_IP}" == "**ChangeMe**" ]; then
   echo "ERROR MASTER_IP variable is not defined - Exiting..."
